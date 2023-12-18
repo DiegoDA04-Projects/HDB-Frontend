@@ -1,7 +1,8 @@
+.page {
+  margin: 2rem 2rem;
+}
 .table-wrapper {
-  width: 1024px;
   overflow: auto;
-  margin: 0 auto;
 }
 
 .mat-column-street {
@@ -9,6 +10,7 @@
   min-width: 256px;
   word-break: keep-all;
 }
+
 
 table {
   width: 100%;

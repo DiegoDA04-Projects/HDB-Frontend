@@ -1,19 +1,42 @@
-<div class="table-wrapper">
-  <!-- Data Table -->
-  <table mat-table [dataSource]="datasource" class="mat-elevation-z2" matSort>
-    @for (column of columns; track column) {
-      <ng-container [matColumnDef]="column.columnDef" >
-        <th mat-header-cell mat-sort-header *matHeaderCellDef >
-          {{ column.header }}
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element[column.columnDef] }}
+<div class="page">
+  <h1>
+    Properties Catalogue
+  </h1>
+
+  <!--Add/Edit Form-->
+  <app-property-form
+    (editCanceled)="onCancelEdit()"
+    (propertyUpdated)="onStudentUpdated($event)"
+    (propertyAdded)="onPropertyAdded($event)"
+    [editMode]="isEditMode"
+    [property]="propertyData"/>
+
+  <!--Data Table-->
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="datasource" class="mat-elevation-z2" matSort>
+      @for (column of columns; track column) {
+        <ng-container [matColumnDef]="column.columnDef" >
+          <th mat-header-cell mat-sort-header *matHeaderCellDef style="min-width: 128px">
+            {{ column.header }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element[column.columnDef] }}
+          </td>
+        </ng-container>
+      }
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th *matHeaderCellDef mat-header-cell> Actions</th>
+        <td *matCellDef="let element" mat-cell>
+          <a (click)="onEditItem(element)" href="javascript:void(0)"><mat-icon>edit</mat-icon></a>
+          <a (click)="onDeleteItem(element)" href="javascript:void(0)"><mat-icon color="warn">delete</mat-icon></a>
         </td>
       </ng-container>
-    }
-    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns:displayedColumns;" mat-row></tr>
-  </table>
-  <!-- Pagination -->
-  <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of properties" showFirstLastButtons></mat-paginator>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns:displayedColumns;" mat-row></tr>
+    </table>
+    <!-- Pagination -->
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of properties" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
+
