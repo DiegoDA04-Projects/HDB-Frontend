@@ -1,1 +1,6 @@
-<app-properties></app-properties>
+<mat-toolbar color="primary">
+  <h1>HDB Property Information</h1>
+  <div class="mat-spacer"></div>
+  <a mat-button *ngFor="let option of options" [routerLink]="option.path">{{ option.title }}</a>
+</mat-toolbar>
+<router-outlet></router-outlet>
