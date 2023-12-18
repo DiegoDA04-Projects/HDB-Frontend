@@ -1,0 +1,18 @@
+.table-wrapper {
+  width: 1024px;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+.mat-column-street {
+  overflow-wrap: break-word;
+  min-width: 256px;
+  word-break: keep-all;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
