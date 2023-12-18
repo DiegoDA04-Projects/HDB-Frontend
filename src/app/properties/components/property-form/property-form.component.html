@@ -1,0 +1,182 @@
+<!-- Add/Edit Form -->
+<h2>{{ editMode ? 'Edit Property' : 'Add Property' }}</h2>
+<div class="form-section">
+  <form (submit)="onSubmit()" #propertyForm='ngForm' class="form-row">
+    <p> Property Location information </p>
+    <table class="property-location">
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Block Number" name="blockNumber" required [(ngModel)]="property.blockNumber">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field >
+          <input matInput  placeholder="Street " name="street" required [(ngModel)]="property.street">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Maximum Floor Level" name="maximumFloorLvl" required [(ngModel)]="property.maximumFloorLevel">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+        <input matInput #wa placeholder="Town" name="town" required [(ngModel)]="property.town">
+        </mat-form-field>
+      </td>
+    </table>
+    <p> Property tags </p>
+    <table class="property-tags">
+      <td>
+        <mat-form-field>
+          <mat-label> Residential</mat-label>
+          <mat-select [(ngModel)]="property.residentialPropertyTag" [ngModelOptions]="{ standalone: true }" required>
+            @for (option of tagOptions; track option ) {
+              <mat-option value="{{ option }}">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> Commercial </mat-label>
+          <mat-select [(ngModel)]="property.commercialPropertyTag" [ngModelOptions]="{ standalone: true }" required>
+            @for (option of tagOptions; track option ) {
+              <mat-option value="{{ option }}">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> Market and hawker </mat-label>
+          <mat-select [(ngModel)]="property.marketAndHawkerTag" [ngModelOptions]="{ standalone: true }" required>
+            @for (option of tagOptions; track option ) {
+              <mat-option value="{{ option }}">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+      <mat-form-field>
+        <mat-label> Miscellaneous </mat-label>
+        <mat-select [(ngModel)]="property.miscellaneous" [ngModelOptions]="{ standalone: true }" required>
+          @for (option of tagOptions; track option ) {
+            <mat-option value="{{ option }}">{{ option }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> Multi-storey carpark </mat-label>
+          <mat-select [(ngModel)]="property.multiStoreyCarParkTag" [ngModelOptions]="{ standalone: true }" required>
+            @for (option of tagOptions; track option ) {
+              <mat-option value="{{ option }}">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> Precinct pavilion </mat-label>
+          <mat-select [(ngModel)]="property.precinctPavilionTag" [ngModelOptions]="{ standalone: true }" required>
+            @for (option of tagOptions; track option ) {
+              <mat-option value="{{ option }}">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </table>
+
+    <p> Rooms sold flats </p>
+    <table class="property-rooms-sold-flats">
+      <td>
+        <mat-form-field>
+          <mat-label> 1-room </mat-label>
+          <input matInput type="number" name="1-room-sold" min="0" required [(ngModel)]="property.numberOneRoomSoldFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> 2-room </mat-label>
+          <input matInput type="number" name="2-room-sold" min="0" required [(ngModel)]="property.numberTwoRoomSoldFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> 3-room </mat-label>
+          <input matInput type="number" name="3-room-sold" min="0" required [(ngModel)]="property.numberThreeRoomSoldFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> 4-room </mat-label>
+          <input matInput type="number" name="4-room-sold" min="0" required [(ngModel)]="property.numberFourRoomSoldFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> 5-room </mat-label>
+          <input matInput type="number" name="5-room-sold" min="0" required [(ngModel)]="property.numberFiveRoomSoldFlats">
+        </mat-form-field>
+      </td>
+    </table>
+
+    <table class="property-rooms-sold-flats">
+      <td>
+        <mat-form-field>
+          <mat-label> Executive-room </mat-label>
+          <input matInput type="number" name="nExecutiveRoom" min="0" required [(ngModel)]="property.numberExecutiveSoldFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> Multi-generation-room </mat-label>
+          <input matInput type="number" name="nMultiGenerationRoom" min="0" required [(ngModel)]="property.numberMultiGenerationSoldFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> Studio apartment-room </mat-label>
+          <input matInput type="number" name="nStudioApartmentRoom" min="0" required [(ngModel)]="property.numberStudioApartmentSoldFlats">
+        </mat-form-field>
+      </td>
+    </table>
+    <p> Rooms rental flats </p>
+    <table class="property-rooms-rental-flats">
+      <td>
+        <mat-form-field>
+          <mat-label> 1-room </mat-label>
+          <input matInput type="number" name="1-room-rental" min="0" required [(ngModel)]="property.numberOneRoomRentalFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> 2-room </mat-label>
+          <input matInput type="number" name="2-room-rental" min="0"required [(ngModel)]="property.numberTwoRoomRentalFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> 3-room </mat-label>
+          <input matInput type="number" name="3-room-rental" min="0" required [(ngModel)]="property.numberThreeRoomRentalFlats">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label> other-room </mat-label>
+          <input matInput type="number" name="4-room-rental" min="0" required [(ngModel)]="property.numberOtherRoomRentalFlats">
+        </mat-form-field>
+      </td>
+    </table>
+
+    <ng-container *ngIf="editMode; else elseTemplate">
+      <button mat-raised-button color="primary">Update</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button mat-raised-button color="primary">Add</button>
+    </ng-template>
+  </form>
+</div>
