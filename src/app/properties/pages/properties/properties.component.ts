@@ -208,7 +208,7 @@ export class PropertiesComponent implements OnInit, AfterViewInit {
     this.resetEditState();
   }
 
-  onStudentUpdated(property: Property) {
+  onPropertyUpdated(property: Property) {
     this.propertyData = property;
     this.updateProperty();
     this.resetEditState();
