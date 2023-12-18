@@ -11,6 +11,13 @@
     [editMode]="isEditMode"
     [property]="propertyData"/>
 
+  <h2 class="information">Information </h2>
+  <p> Housing and Development Board property information </p>
+  <mat-form-field class="filter">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. LOS REYES" #input>
+  </mat-form-field>
+
   <!--Data Table-->
   <div class="table-wrapper">
     <table mat-table [dataSource]="datasource" class="mat-elevation-z2" matSort>

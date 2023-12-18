@@ -6,6 +6,8 @@ import {MatSort, MatSortModule} from "@angular/material/sort";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {PropertyFormComponent} from "../../components/property-form/property-form.component";
 import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 const columns = [
   {
@@ -118,7 +120,9 @@ const columns = [
     MatPaginatorModule,
     MatSortModule,
     PropertyFormComponent,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   templateUrl: './properties.component.html',
   styleUrl: './properties.component.css'
@@ -191,6 +195,11 @@ export class PropertiesComponent implements OnInit, AfterViewInit {
   onEditItem(element: Property) {
     this.propertyData = element;
     this.isEditMode = true;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.datasource.filter = filterValue.trim().toLowerCase();
   }
 
   onCancelEdit() {

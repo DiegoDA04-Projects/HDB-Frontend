@@ -4,6 +4,12 @@
 .table-wrapper {
   overflow: auto;
 }
+.filter {
+  padding: 1rem 0;
+}
+.information {
+  margin: 1rem 0;
+}
 
 .mat-column-street {
   overflow-wrap: break-word;
